@@ -6,17 +6,17 @@ import SuggestionList from './components/Suggestion/SuggestionList';
 import getSicks from './api/sickApi';
 
 function App() {
-  const noInputString = {'sickCd':'a','sickNm':'검색어 없음'}
+  const noInputString = { sickCd: 'a', sickNm: '검색어 없음' };
   const [fetchedSick, setFetchedSick] = useState([]);
   const [searchedSick, setSearchedSick] = useState([noInputString]);
+
   const sicks = async () => {
-    const result = await getSicks('');
+    const result = await getSicks();
     setFetchedSick(result);
   };
   useEffect(() => {
     sicks();
-    console.log(searchedSick);
-  }, [searchedSick]);
+  }, []);
 
   const handleChange = event => {
     event.preventDefault();

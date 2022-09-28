@@ -1,8 +1,10 @@
 import axios from 'axios';
 
-export const getSicks = async query => {
+const api_url = process.env.REACT_APP_API_URL
+
+export const getSicks = async () => {
   try {
-    const response = await axios.get('http://localhost:4000/sick');
+    const response = await axios.get(api_url);
     return response.data;
   } catch (error) {
     console.log(error);

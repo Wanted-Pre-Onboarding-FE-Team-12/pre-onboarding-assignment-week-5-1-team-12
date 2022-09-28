@@ -1,7 +1,7 @@
 export class CacheStorage {
   constructor(cacheNmae) {
     this.cacheNmae = cacheNmae;
-    this.url = `${process.env.REACT_APP_API_URL}sick?sickNm_like=${cacheNmae}`;
+    this.url = `${process.env.REACT_APP_BASE_URL}/sick?sickNm_like=${cacheNmae}`;
   }
 
   async initialize() {

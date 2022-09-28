@@ -19,7 +19,7 @@ const SearchInput = ({ setShowResults, setKeyword }) => {
     timeout.current = setTimeout(() => {
       dispatch(fetchList(inputRef.current.value));
       setKeyword(inputRef.current.value);
-    }, 800);
+    }, 250);
   };
 
   return (

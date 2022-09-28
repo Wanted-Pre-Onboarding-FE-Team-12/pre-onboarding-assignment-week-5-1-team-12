@@ -6,5 +6,5 @@ export const store = configureStore({
   reducer: { search: searchSlice },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({ serializableCheck: false }).concat(logger),
-  devTools: process.env.NODE_ENV === 'development',
+  devTools: false,
 });

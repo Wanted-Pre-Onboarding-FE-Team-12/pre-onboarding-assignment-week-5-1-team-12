@@ -6,8 +6,9 @@ import SuggestionList from './components/Suggestion/SuggestionList';
 import getSicks from './api/sickApi';
 
 function App() {
+  const noInputString = {'sickCd':'a','sickNm':'검색어 없음'}
   const [fetchedSick, setFetchedSick] = useState([]);
-  const [searchedSick, setSearchedSick] = useState([]);
+  const [searchedSick, setSearchedSick] = useState([noInputString]);
   const sicks = async () => {
     const result = await getSicks('');
     setFetchedSick(result);
@@ -21,7 +22,7 @@ function App() {
     event.preventDefault();
     const target = event.target.value;
     if (target.trim().length === 0) {
-      setSearchedSick([]);
+      setSearchedSick([noInputString]);
       return;
     }
     const searchedResult = fetchedSick.filter(sick => sick.sickNm.includes(target));
@@ -34,7 +35,7 @@ function App() {
         <br /> 온라인으로 참여하기
       </h1>
       <SearchInput handleChange={handleChange} />
-      {searchedSick.length > 0 && <SuggestionList sicks={searchedSick} />}
+      <SuggestionList sicks={searchedSick} />
     </AppContainer>
   );
 }

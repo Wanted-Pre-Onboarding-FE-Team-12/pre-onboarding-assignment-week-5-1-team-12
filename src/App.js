@@ -9,6 +9,7 @@ function App() {
   const noInputString = { sickCd: 'a', sickNm: '검색어 없음' };
   const [fetchedSick, setFetchedSick] = useState([]);
   const [searchedSick, setSearchedSick] = useState([noInputString]);
+  const [targetQuery, setTargetQuery] = useState('');
 
   const sicks = async () => {
     const result = await getSicks();
@@ -20,12 +21,12 @@ function App() {
 
   const handleChange = event => {
     event.preventDefault();
-    const target = event.target.value;
-    if (target.trim().length === 0) {
+    setTargetQuery(event.target.value);
+    if (targetQuery.trim().length === 0) {
       setSearchedSick([noInputString]);
       return;
     }
-    const searchedResult = fetchedSick.filter(sick => sick.sickNm.includes(target));
+    const searchedResult = fetchedSick.filter(sick => sick.sickNm.includes(targetQuery));
     setSearchedSick(searchedResult);
   };
   return (
@@ -35,7 +36,7 @@ function App() {
         <br /> 온라인으로 참여하기
       </h1>
       <SearchInput handleChange={handleChange} />
-      <SuggestionList sicks={searchedSick} />
+      <SuggestionList sicks={searchedSick} targetQuery={targetQuery}/>
     </AppContainer>
   );
 }

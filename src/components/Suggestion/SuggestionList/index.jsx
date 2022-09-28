@@ -2,13 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import SuggestionItem from '../SuggestionItem';
 
-const SuggestionList = ({ sicks }) => {
+const SuggestionList = ({ sicks, targetQuery }) => {
   return (
     <List>
       <span style={{ fontSize: '5px', color: 'grey' }}>추천 검색어</span>
       {sicks &&
         sicks.length > 0 &&
-        sicks.map(sick => <SuggestionItem key={sick.sickCd} sick={sick} />)}
+        sicks.map(sick => <SuggestionItem key={sick.sickCd} sick={sick} targetQuery={targetQuery}/>)}
     </List>
   );
 };

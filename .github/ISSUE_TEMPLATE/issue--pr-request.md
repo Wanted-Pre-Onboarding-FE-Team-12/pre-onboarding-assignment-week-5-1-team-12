@@ -1,9 +1,9 @@
 ---
-name: "Issue: PR request"
+name: 'Issue: PR request'
 about: PR message
-title: ""
-labels: ""
-assignees: ""
+title: ''
+labels: ''
+assignees: ''
 ---
 
 ## 🚅 PR 한 줄 요약

@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import * as searchApi from '@api/searchApi';
 import { CacheStorage } from '@utils/cacheStorage';
 
-const initialState = { searchData: [], isFetching: false };
+const initialState = { searchData: [], isFetching: false, showList: false };
 
 export const fetchList = createAsyncThunk(
   'search/getlist',
@@ -32,13 +32,16 @@ const searchSlice = createSlice({
   extraReducers: builder => {
     builder.addCase(fetchList.pending, state => {
       state.isFetching = true;
+      state.showList = true;
     });
     builder.addCase(fetchList.fulfilled, (state, action) => {
       state.searchData = action.payload;
       state.isFetching = false;
+      state.showList = true;
     });
     builder.addCase(fetchList.rejected, state => {
       state.isFetching = false;
+      state.showList = false;
     });
   },
 });
